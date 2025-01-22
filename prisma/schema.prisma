@@ -1,0 +1,36 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "windows", "debian-openssl-3.0.x"]
+}
+
+model User {
+  id        String   @id @default(uuid()) // Unique identifier for each user
+  email     String   @unique              // Email for login (unique for each user)
+  password  String                        // Hashed password for authentication
+  name      String                        // User's name  
+  tasks     Task[]                        // Relation to tasks
+  createdAt DateTime @default(now())      // Timestamp when the user is created
+  updatedAt DateTime @updatedAt           // Timestamp for when the user is updated
+}
+
+model Task {
+  id          String   @id @default(uuid()) // Unique identifier for each task
+  title       String                        // Task title
+  description String?                       // Optional task description
+  priority    String   @default("low")      // Task priority (low, medium, high)
+  completed   Boolean  @default(false)      // Task completion status
+  dueDate     DateTime?                     // Optional due date for the task
+  user        User     @relation(fields: [userId], references: [id]) // User association
+  userId      String                        // Foreign key to User
+  favorite    Boolean  @default(false)      // Task favorite status
+  reminder    String  @default("No reminder")      // Task reminder status
+  createdAt   DateTime @default(now())      // Timestamp when the task is created
+  updatedAt   DateTime @updatedAt           // Timestamp for when the task is updated
+  repeat      Boolean  @default(false)      // Task repeat status
+}
+
