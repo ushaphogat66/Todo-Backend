@@ -15,10 +15,9 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
-      "https://do-it-tasks.vercel.app",
-      "http://localhost:4000",
-      "https://do-it-tasks.vercel.app/",
-      "http://192.168.1.3:4000"
+      "https://todo-app-usha.vercel.app",
+      "https://todo-app-usha.vercel.app/"
+      
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
