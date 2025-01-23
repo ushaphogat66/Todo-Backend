@@ -17,7 +17,6 @@ app.use(
     origin: [
       "https://todo-app-usha.vercel.app",
       "https://todo-app-usha.vercel.app/"
-      
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
