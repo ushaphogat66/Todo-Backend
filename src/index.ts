@@ -47,7 +47,6 @@ app.get("/", (req: Request, res: Response) => {
                   backdrop-filter: blur(10px);
                   padding: 50px;
                   border-radius: 10px;
-                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
               }
               h1 {
                   background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
